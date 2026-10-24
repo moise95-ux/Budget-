@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mon Budget</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+  <section id="homePage" class="page">
+    <header class="topbar">
+      <button id="prevMonth" class="month-arrow" aria-label="Mois précédent">‹</button>
+      <h1 id="monthTitle">Novembre 2026</h1>
+      <div class="header-right">
+        <button id="nextMonth" class="month-arrow" aria-label="Mois suivant">›</button>
+        <button id="languageButton" class="language-button" aria-haspopup="menu" aria-expanded="false"><span id="languageCurrentFlag">🇫🇷</span><span id="languageCurrentCode">FR</span><span class="chevron">⌄</span></button>
+        <div id="languageMenu" class="language-menu" role="menu"></div>
+      </div>
+    </header>
+
+    <section class="salary-card">
+      <div class="salary-copy">
+        <div class="wallet-icon" aria-hidden="true"><span>€</span></div>
+        <div><span class="eyebrow" data-i18n="monthlySalary">Salaire du mois</span><strong id="salaryDisplay">2 500 €</strong></div>
+      </div>
+      <button id="editSalary" class="edit-square" aria-label="Modifier le salaire">✎</button>
+    </section>
+
+    <section class="summary">
+      <article class="summary-card expense"><div class="summary-icon">🛒</div><span data-i18n="totalCharges">Total des charges</span><strong id="chargesDisplay">2 691 €</strong></article>
+      <article class="summary-card saving"><div class="summary-icon">🐷</div><span data-i18n="savings">Épargne</span><strong id="savingDisplay">400 €</strong></article>
+      <article class="summary-card remaining"><div class="summary-icon">🪙</div><span id="remainingLabel" data-i18n="overdraft">Découvert</span><strong id="remainingDisplay">-591 €</strong></article>
+    </section>
+
+    <section class="panel breakdown-panel">
+      <div class="panel-title"><h2 data-i18n="salaryDistribution">Répartition du salaire</h2><span id="percentLabel">108 %</span></div>
+      <div class="breakdown-body">
+        <div class="donut-wrap"><div id="donut" class="donut"><div class="donut-hole"><strong id="donutAmount">-591 €</strong><span id="donutCenterLabel">Découvert</span></div></div></div>
+        <div id="legend" class="legend"></div>
+      </div>
+    </section>
+
+    <section class="panel charges-panel">
+      <div class="panel-title"><h2 data-i18n="myCharges">Mes charges du mois</h2><button id="addCharge" class="primary add-btn"><span data-i18n="add">+ Ajouter</span></button></div>
+      <div id="chargesList" class="charges-list"></div>
+    </section>
+
+    <button id="saveMonth" class="primary save hidden">Enregistrer</button>
+  </section>
+
+  <section id="annualPage" class="page hidden">
+    <header class="annual-header">
+      <button class="back-btn" data-page="home">‹</button>
+      <h2 data-i18n="annual">Salaire annuel</h2>
+      <div class="annual-header-right">
+        <button id="annualLanguageButton" class="language-button" aria-haspopup="menu" aria-expanded="false"><span id="annualLanguageCurrentFlag">🇫🇷</span><span id="annualLanguageCurrentCode">FR</span><span class="chevron">⌄</span></button>
+        <div id="annualLanguageMenu" class="language-menu" role="menu"></div>
+      </div>
+    </header>
+    <div class="annual-content">
+      <section class="chart-card"><div class="chart-card-title"><h3 data-i18n="salaryEvolution">Évolution du salaire</h3><span id="annualYear">2026</span></div><div class="line-chart"><svg id="salaryLineSvg" viewBox="0 0 360 260" preserveAspectRatio="none"></svg></div><div id="salaryEvolution" class="annual-note"></div></section>
+    </div>
+  </section>
+
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-page="home"><span class="nav-icon home-icon">⌂</span><span data-i18n="home">Accueil</span></button>
+    <button class="nav-btn" data-page="annual"><span class="nav-icon bars-icon">▥</span><span data-i18n="annual">Salaire annuel</span></button>
+  </nav>
+</main>
+
+<dialog id="salaryDialog"><form method="dialog" id="salaryForm" class="dialog-form"><h2 data-i18n="editSalary">Modifier le salaire</h2><label><span data-i18n="amount">Montant (€)</span><input id="salaryInput" type="number" min="0" step="0.01" required></label><div class="dialog-actions"><button value="cancel" formnovalidate data-i18n="cancel">Annuler</button><button value="ok" class="primary" data-i18n="save">Enregistrer</button></div></form></dialog>
+<dialog id="chargeDialog"><form method="dialog" id="chargeForm" class="dialog-form"><h2 id="chargeDialogTitle">Ajouter une charge</h2><label><span data-i18n="name">Nom</span><input id="chargeName" required maxlength="40"></label><label><span data-i18n="amount">Montant (€)</span><input id="chargeAmount" type="number" min="0" step="0.01" required></label><input id="chargeIndex" type="hidden" value="-1"><div class="dialog-actions"><button value="cancel" formnovalidate data-i18n="cancel">Annuler</button><button value="ok" class="primary" data-i18n="save">Enregistrer</button></div></form></dialog>
+<script src="app.js"></script>
+</body>
+</html>
