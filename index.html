@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17233B">
+  <title>Mon budget</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main id="app">
+    <p class="loading">Chargement…</p>
+    <noscript><p class="loading">Cette application a besoin de JavaScript pour fonctionner.</p></noscript>
+  </main>
+
+  <nav class="tabs" aria-label="Navigation principale">
+    <button type="button" class="tab" data-action="tab" data-view="month">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <span>Mois</span>
+    </button>
+    <button type="button" class="tab" data-action="tab" data-view="year">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M21 20H3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <span>Année</span>
+    </button>
+  </nav>
+
+  <dialog id="expense-dialog" aria-labelledby="dlg-title">
+    <form id="expense-form" novalidate>
+      <h2 id="dlg-title">Nouvelle dépense</h2>
+
+      <label class="field">
+        <span>Montant (€)</span>
+        <input type="number" name="amount" inputmode="decimal" step="0.01" min="0.01" placeholder="0,00" required>
+      </label>
+
+      <label class="field">
+        <span>Description</span>
+        <input type="text" name="label" maxlength="60" placeholder="Courses, loyer, cinéma…">
+      </label>
+
+      <label class="field">
+        <span>Catégorie</span>
+        <select name="cat"></select>
+      </label>
+
+      <label class="field">
+        <span>Date</span>
+        <input type="date" name="date" required>
+      </label>
+
+      <p class="form-error" id="expense-error" role="alert" hidden></p>
+
+      <div class="dlg-actions">
+        <button type="button" class="btn ghost" data-action="cancel">Annuler</button>
+        <button type="submit" class="btn">Enregistrer la dépense</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
