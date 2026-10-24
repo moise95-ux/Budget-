@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mon Budget</title>
+<link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+<header>
+  <div class="bar">
+    <button id="prev" class="ic" aria-label="Précédent">‹</button>
+    <h1 id="title"></h1>
+    <button id="next" class="ic" aria-label="Suivant">›</button>
+    <select id="lang" aria-label="Langue">
+      <option value="fr">🇫🇷 FR</option><option value="en">🇬🇧 EN</option><option value="ar">🇸🇦 AR</option>
+    </select>
+  </div>
+</header>
+<main>
+  <section id="home">
+    <div class="card salary"><span class="wallet">👛</span><div><small data-t="salary"></small><strong id="salary"></strong></div><button id="editSalary" class="ic light" aria-label="Modifier">✎</button></div>
+    <div class="tiles">
+      <div class="tile red"><span>🛒</span><small data-t="total"></small><strong id="total"></strong></div>
+      <button id="editSavings" class="tile blue"><span>🐷</span><small data-t="savings"></small><strong id="savings"></strong></button>
+      <div class="tile amber" id="restTile"><span>🪙</span><small id="restLabel"></small><strong id="rest"></strong></div>
+    </div>
+    <div class="card">
+      <div class="row"><h2 data-t="split"></h2><span id="pct" class="muted"></span></div>
+      <div class="split"><svg id="donut" viewBox="0 0 120 120" aria-hidden="true"></svg><ul id="legend"></ul></div>
+    </div>
+    <div class="card">
+      <div class="row"><h2 data-t="charges"></h2><button id="add" class="primary"></button></div>
+      <ul id="list" class="list"></ul>
+      <button id="copy" class="link"></button>
+    </div>
+  </section>
+  <section id="annual" hidden>
+    <div class="card">
+      <div class="row"><h2 data-t="evolution"></h2><span id="year" class="muted"></span></div>
+      <svg id="chart" viewBox="0 0 340 230"></svg>
+      <p class="muted hint" data-t="hint"></p>
+    </div>
+  </section>
+</main>
+<nav>
+  <button data-view="home" class="on"><span>🏠</span><small data-t="home"></small></button>
+  <button data-view="annual"><span>📊</span><small data-t="annualTab"></small></button>
+</nav>
+<dialog id="dlg"><form method="dialog" id="form"></form></dialog>
+<script src="src/app.js"></script>
+</body>
+</html>
